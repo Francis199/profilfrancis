@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinegena Kulimushi Francis — Développeur Full Stack / Référent Technique</title>
+<meta name="description" content="Développeur Full Stack (Laravel, React, Docker, CI/CD) à Bukavu. Concepteur de Naticlass et expert en systèmes d'information.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b1329;
+  --surface: #131f37;
+  --surface-subtle: #1a2a4a;
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --line: #1e293b;
+  --primary: #3b82f6;
+  --primary-light: #1e3a8a;
+  --accent: #14b8a6;
+  --accent-soft: #134e4a;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  --radius: 16px;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+:root[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --accent: #0d9488;
+  --accent-soft: #ccfbf1;
+  --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* Navigation */
+header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.logo { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav { display: flex; gap: 20px; align-items: center; font-size: 0.92rem; font-weight: 500; }
+nav a { color: var(--muted); transition: color 0.2s; }
+nav a:hover { color: var(--ink); }
+#theme { background: var(--surface-subtle); border: 1px solid var(--line); color: var(--ink); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+#theme:hover { transform: rotate(15deg); }
+
+/* Hero section */
+.hero { padding: 50px 0 30px; }
+.hero-grid { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: center; }
+
+/* Profile Card */
+.profile-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; text-align: center; box-shadow: var(--shadow); }
+.avatar-wrapper { position: relative; width: 170px; height: 170px; margin: 0 auto 16px; }
+.avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--surface-subtle); box-shadow: var(--shadow); }
+.status-badge { position: absolute; bottom: 8px; right: 8px; background: #22c55e; width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--surface); }
+
+.hero-content h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 8px; }
+.role { font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-bottom: 16px; }
+.lead { color: var(--muted); font-size: 1rem; max-width: 680px; margin-bottom: 24px; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { padding: 12px 22px; border-radius: 99px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; border: 1px solid var(--line); background: var(--surface); }
+.btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+/* Section Identité & Mobilité */
+.identity-section { margin-top: 36px; }
+.identity-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+.identity-card h3 { font-family: var(--font-display); margin-bottom: 20px; font-size: 1.15rem; color: var(--accent); border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.identity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+.info-item label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 4px; }
+.info-item span { font-weight: 500; font-size: 0.95rem; color: var(--ink); }
+
+/* Chiffres clés */
+.facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 30px; }
+.fact-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.fact-item b { font-family: var(--font-display); font-size: 2rem; color: var(--primary); display: block; line-height: 1; margin-bottom: 6px; }
+.fact-item span { color: var(--muted); font-size: 0.875rem; }
+
+/* Section Layout */
+section { padding: 50px 0; border-top: 1px solid var(--line); }
+section .wrap { display: grid; grid-template-columns: 240px 1fr; gap: 40px; }
+h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; position: sticky; top: 90px; }
+
+/* Compétences */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.skill-box { background: var(--surface); border: 1px solid var(--line); padding: 20px; border-radius: var(--radius); }
+.skill-box h3 { font-size: 0.98rem; margin-bottom: 12px; color: var(--primary); font-family: var(--font-display); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+.chips li { background: var(--surface-subtle); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; font-size: 0.85rem; font-weight: 500; }
+.chips.core li { background: var(--primary-light); color: var(--primary); border-color: transparent; }
+
+/* Réalisations */
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+.card.big { grid-column: 1 / -1; border-left: 4px solid var(--primary); }
+.card h3 { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 8px; }
+.card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; font-size: 0.82rem; color: var(--accent); font-weight: 600; }
+
+/* Timeline Parcours */
+.timeline { list-style: none; border-left: 2px solid var(--line); padding-left: 24px; margin-left: 8px; }
+.timeline > li { position: relative; margin-bottom: 36px; }
+.timeline > li::before { content: ""; position: absolute; left: -31px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); }
+.timeline .when { font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 2px; }
+.timeline h3 { font-family: var(--font-display); font-size: 1.1rem; }
+.timeline .org { color: var(--accent); font-size: 0.92rem; font-weight: 500; margin-bottom: 10px; }
+.timeline ul { padding-left: 18px; color: var(--muted); font-size: 0.92rem; }
+.timeline ul li { margin-bottom: 6px; }
+
+/* Formation, Langues & Références */
+.edu-list { list-style: none; display: grid; gap: 14px; margin-top: 10px; }
+.edu-list li { background: var(--surface); padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px; }
+.ref-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; font-size: 0.9rem; }
+.ref-card strong { display: block; color: var(--ink); font-size: 0.95rem; }
+.ref-card span { color: var(--primary); display: block; font-size: 0.85rem; margin-bottom: 8px; }
+
+footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.875rem; text-align: center; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .hero-grid, section .wrap { grid-template-columns: 1fr; gap: 24px; }
+  .projects { grid-template-columns: 1fr; }
+  h2 { position: static; }
+  nav a:not(.keep) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">C. K. Francis</a>
+    <nav aria-label="Navigation principale">
+      <a href="#apropos">À propos</a>
+      <a href="#identite">Identité</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#realisations">Projets</a>
+      <a href="#references">Références</a>
+      <a class="keep" href="#contact">Contact</a>
+      <button id="theme" type="button" aria-label="Changer de thème">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <!-- Carte Photo Candidat -->
+      <div class="profile-card">
+        <div class="avatar-wrapper">
+          <!-- REMPLACER PAR VOTRE PHOTO EN INDIQUEANT SON CHEMIN/URL -->
+          <img class="avatar" src="https://ui-avatars.com/api/?name=Cinegena+Francis&background=3b82f6&color=fff&size=200" alt="Cinegena Kulimushi Francis">
+          <span class="status-badge" title="Disponible pour mobilité"></span>
+        </div>
+        <span style="font-size: 0.85rem; color: var(--muted); font-weight: 500;">Disponible pour mobilité</span>
+      </div>
+
+      <!-- Hero Header -->
+      <div class="hero-content">
+        <h1>Cinegena Kulimushi Francis</h1>
+        <p class="role">Développeur Full Stack / Référent Technique</p>
+        <p class="lead">Développeur Full Stack avec plusieurs années d'expérience dans la conception, le déploiement et la maintenance d'applications métiers (Laravel, React, Docker, CI/CD). Concepteur d'un ERP de gestion scolaire déployé dans plus de 15 établissements et de systèmes d'archivage numérique universitaires.</p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:cinegenafrancis@gmail.com">Me contacter</a>
+          <a class="btn" href="tel:+243977408838">+243 977 408 838</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Identité, Mobilité & État Civil -->
+    <div id="identite" class="identity-section">
+      <div class="identity-card">
+        <h3>Identité, Mobilité & État Civil</h3>
+        <div class="identity-grid">
+          <div class="info-item">
+            <label>Nom Complet</label>
+            <span>CINEGENA KULIMUSHI FRANCIS</span>
+          </div>
+          <div class="info-item">
+            <label>État Civil</label>
+            <span>Marié</span>
+          </div>
+          <div class="info-item">
+            <label>Adresse</label>
+            <span>Av. Blvd du Lac N°28A, BUKAVU, Sud-Kivu, R.D. Congo</span>
+          </div>
+          <div class="info-item">
+            <label>Mobilité / Autorisation</label>
+            <span>Disponible pour installation en France (Visa/titre de séjour à solliciter)</span>
+          </div>
+          <div class="info-item">
+            <label>Disponibilité</label>
+            <span>Préavis négociable (Employeur prêt à faciliter le départ)</span>
+          </div>
+          <div class="info-item">
+            <label>Email & Téléphone</label>
+            <span>cinegenafrancis@gmail.com | +243 977 408 838</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chiffres Clés -->
+    <div class="facts-grid">
+      <div class="fact-item"><b>15+</b><span>Écoles gérées avec l'ERP Naticlass</span></div>
+      <div class="fact-item"><b>6 000</b><span>Étudiants suivis/an à l'UCB</span></div>
+      <div class="fact-item"><b>150+</b><span>Agents administratifs formés</span></div>
+      <div class="fact-item"><b>800+</b><span>Jeunes encadrés comme Chef Scout</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="apropos">
+  <div class="wrap">
+    <h2>Profil</h2>
+    <div>
+      <p>Développeur full stack expérimenté dans la conception, le déploiement et la maintenance d'applications métiers (Laravel, React, Docker, CI/CD). Concepteur d'un ERP de gestion scolaire complet (scolarité, finance, paie, discipline) déployé dans plus de 15 établissements, et d'applications de suivi-évaluation et d'archivage numérique pour des organisations internationales et universitaires.</p>
+      <br>
+      <p>Habitué à travailler avec des équipes métiers, à analyser des données, à documenter et à accompagner des utilisateurs et des développeurs. Rigoureux, autonome et force de proposition, je cherche à mettre mon expérience au service de la modernisation et de l'intégration de systèmes d'information.</p>
+    </div>
+  </div>
+</section>
+
+<section id="competences">
+  <div class="wrap">
+    <h2>Compétences Clés</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h3>Développement Backend</h3>
+        <ul class="chips core"><li>PHP / Laravel (Expertise)</li><li>APIs RESTful</li><li>MySQL</li><li>PostgreSQL</li><li>MariaDB</li><li>Python</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>Développement Frontend</h3>
+        <ul class="chips core"><li>React.js</li><li>Inertia.js</li><li>Tailwind CSS</li><li>Bootstrap</li><li>HTML5 / CSS3 / JS</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>DevOps & Administration</h3>
+        <ul class="chips"><li>Docker</li><li>Git / GitHub</li><li>Jenkins</li><li>Kubernetes</li><li>CI/CD</li><li>Linux</li><li>Nginx / Apache</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>Qualité Logicielle & Data</h3>
+        <ul class="chips"><li>PHPUnit / Pest</li><li>SonarQube</li><li>Clean Code & DRY</li><li>Stata</li><li>R</li><li>Python (Jupyter)</li><li>SQL / Reporting</li><li>n8n / Zapier / Make</li></ul>
+      </div>
+      <div class="skill-box" style="grid-column: 1 / -1;">
+        <h3>Multimédia & Production Audiovisuelle</h3>
+        <ul class="chips"><li>Photographie & Prise de vue</li><li>Vidéographie & Montage vidéo</li><li>Retouche d'images</li><li>Création de contenus numériques</li><li>Conception de supports de communication</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="parcours">
+  <div class="wrap">
+    <h2>Parcours Pro</h2>
+    <div>
+      <ol class="timeline">
+        <li>
+          <div class="when">Août 2022 – Présent</div>
+          <h3>Chargé de la scolarité et des statistiques / Développeur</h3>
+          <div class="org">Université Catholique de Bukavu (UCB) — Bukavu, RDC</div>
+          <ul>
+            <li>Pilotage des applications de gestion de scolarité (inscriptions, notes, résultats, délibérations, relevés) pour ~6 000 étudiants par an.</li>
+            <li>Conception et déploiement d'une application d'archivage numérique des documents académiques depuis 1989 (plusieurs milliers de documents en Laravel, React/Inertia, MySQL).</li>
+            <li>Développement de l'application de suivi des dossiers étudiants (codification automatique, traçabilité en temps réel, réduction des délais de traitement).</li>
+            <li>Production des tableaux de bord statistiques pour la direction (effectifs, taux de réussite, flux étudiants sous Excel et outils de reporting).</li>
+            <li>Administration des serveurs Linux, conteneurisation Docker, sauvegardes automatisées et maintenance opérationnelle.</li>
+            <li>Formation et support technique sur site et à distance pour plus de 150 utilisateurs administratifs et académiques.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="when">2023 – Présent</div>
+          <h3>Consultant IT & Développeur</h3>
+          <div class="org">MAMAS FOR AFRICA (Belgique) — Mission à distance & terrain</div>
+          <ul>
+            <li>Analyse des besoins et traduction des processus terrain/bureau en spécifications fonctionnelles et techniques.</li>
+            <li>Développement sous Laravel de l'application globale (gestion de projets, bénéficiaires, équipes, suivi budgétaire, rapports).</li>
+            <li>Mise en place des indicateurs KPI et tableaux de bord de suivi des objectifs annuels.</li>
+            <li>Déploiement et hébergement conteneurisé avec Git et Docker, rédaction des documentations et guides utilisateurs.</li>
+            <li>Conseil à la direction sur la stratégie numérique, la sécurité des données et les accès RBAC.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="when">2023 – Présent</div>
+          <h3>Concepteur & Développeur — ERP "Naticlass"</h3>
+          <div class="org">Projet entrepreneurial — Est de la RDC</div>
+          <ul>
+            <li>Conception de bout en bout d'une solution SaaS multi-établissements (Scolarité, Finance, Paie, Discipline, Statistiques).</li>
+            <li>Architecture Full Stack (Laravel, React/Inertia, Tailwind CSS, MariaDB, APIs REST, RBAC).</li>
+            <li>Industrialisation DevOps : conteneurisation Docker, pipelines CI/CD Git/GitHub, tests automatisés (PHPUnit/Pest).</li>
+            <li>Déploiement et support continu dans plus de 15 établissements scolaires du Sud-Kivu avec plusieurs milliers d'utilisateurs.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="when">Février 2025 – Janvier 2026</div>
+          <h3>Consultant Développeur & Chargé de communication</h3>
+          <div class="org">CRISIA ASBL — Bukavu, RDC</div>
+          <ul>
+            <li>Conception et administration du site web et des plateformes en ligne de l'association.</li>
+            <li>Définition de la stratégie de communication, création de supports graphiques (affiches, rapports) et contenus pour bailleurs.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="when">Novembre 2021 – Juin 2022</div>
+          <h3>Concepteur de l'application de Suivi-Évaluation / Analyste de données</h3>
+          <div class="org">Louvain Coopération — Bukavu, RDC</div>
+          <ul>
+            <li>Conception fonctionnelle/technique de l'application de suivi-évaluation des projets avec les équipes programmes.</li>
+            <li>Définition des indicateurs, formulaires de collecte et workflows de validation.</li>
+            <li>Analyses statistiques, nettoyage de données et reporting sous Excel, SQL et outils de visualisation.</li>
+            <li>Tests, recette fonctionnelle, rédaction de la documentation et formation des utilisateurs.</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3 style="font-family: var(--font-display); margin: 30px 0 12px;">Formation</h3>
+      <ul class="edu-list">
+        <li><strong>2025 – En cours</strong> : MSc en Sciences de l'Information Organisationnelle — <i>Université Catholique de Bukavu (UCB)</i></li>
+        <li><strong>Sept. 2023 – Fév. 2024</strong> : Formation en Communication et Graphisme — <i>IHECS (Haute École de Communication), Bruxelles</i></li>
+        <li><strong>2016 – 2021</strong> : BAC+5 en Sciences Informatiques — <i>Université Catholique de Bukavu (UCB)</i></li>
+        <li><strong>2009 – 2015</strong> : Diplôme d'État en Biologie-Chimie — <i>Institut de Bukavu</i></li>
+      </ul>
+
+      <h3 style="font-family: var(--font-display); margin: 30px 0 12px;">Langues</h3>
+      <p style="color: var(--muted); font-size: 0.95rem;">
+        <strong>Français :</strong> Professionnel (Écrit & Oral) | <strong>Anglais :</strong> Langue de travail | <strong>Swahili :</strong> Professionnel | <strong>Lingala :</strong> Langue de travail
+      </p>
+
+      <h3 style="font-family: var(--font-display); margin: 30px 0 12px;">Engagement Associatif</h3>
+      <p style="color: var(--muted); font-size: 0.95rem;">
+        <strong>Scout — Chef de groupe (2021 – 2024) :</strong> Encadrement bénévole de plus de 800 jeunes, animation d'équipes et gestion de groupe.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="realisations">
+  <div class="wrap">
+    <h2>Projets Clés</h2>
+    <div class="projects">
+      <article class="card big">
+        <h3>ERP Naticlass — Gestion Scolaire SaaS</h3>
+        <p>Solution multi-établissements complète (Finance, Paie, Scolarité, Discipline). Traitement de données volumineuses, sécurité RBAC, CI/CD et déploiement continu.</p>
+        <ul class="tags"><li>Laravel</li><li>React / Inertia</li><li>Docker</li><li>MariaDB</li><li>PHPUnit</li></ul>
+      </article>
+      <article class="card">
+        <h3>Archivage Numérique Académique (UCB)</h3>
+        <p>Numérisation et moteur de recherche pour les relevés, diplômes et dossiers étudiants remontant à 1989.</p>
+        <ul class="tags"><li>Laravel</li><li>React</li><li>MySQL</li></ul>
+      </article>
+      <article class="card">
+        <h3>Gestion de Projets Terrain (Mamas for Africa)</h3>
+        <p>Suivi des bénéficiaires, des activités et gestion budgétaire en temps réel avec tableaux de bord KPI.</p>
+        <ul class="tags"><li>Laravel</li><li>Docker</li><li>KPI Reporting</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="references">
+  <div class="wrap">
+    <h2>Références</h2>
+    <div>
+      <p style="color: var(--muted);">Personnes-ressources pouvant attester de mon parcours professionnel :</p>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <strong>Prof. Aimé HERI-KAZI BISIMWA</strong>
+          <span>Vice-Recteur aux Affaires Académiques, UCB</span>
+          📞 +243 998 611 147<br>✉️ heri.kazi@ucbukavu.ac.cd
+        </div>
+        <div class="ref-card">
+          <strong>Emmanuel RAFIKI</strong>
+          <span>Chef de Mission RDC, Mamas for Africa</span>
+          📞 +243 997 286 695<br>✉️ emmanuel@mamasforafrica.be
+        </div>
+        <div class="ref-card">
+          <strong>Olivier MATUMAINI</strong>
+          <span>Chef de Projets SAD, Louvain Coopération</span>
+          📞 +243 997 511 033<br>✉️ omatumaini@louvaincooperation.org
+        </div>
+        <div class="ref-card">
+          <strong>Rev. Frère Ernest Ciza MAHESHE</strong>
+          <span>Chef d'Établissement, ITFM Bukavu</span>
+          📞 +32 460 97 88 60<br>✉️ erneci@yahoo.fr
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <div>
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Parlons de votre projet ou opportunité</h3>
+      <p style="color: var(--muted); margin: 12px 0 20px;">Je suis joignable rapidement par email ou téléphone.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:cinegenafrancis@gmail.com">cinegenafrancis@gmail.com</a>
+        <a class="btn" href="tel:+243977408838">+243 977 408 838</a>
+        <a class="btn" href="#">LinkedIn</a>
+        <a class="btn" href="#">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Cinegena Kulimushi Francis · Bukavu, Sud-Kivu, RDC
+  </div>
+</footer>
+
+<script>
+(function(){
+  var r = document.documentElement, b = document.getElementById('theme');
+  
+  // Définit le mode dark par défaut si aucun choix n'est sauvegardé
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) {
+      r.setAttribute('data-theme', t);
+    } else {
+      r.setAttribute('data-theme', 'dark');
+    }
+  } catch(e) {
+    r.setAttribute('data-theme', 'dark');
+  }
+
+  b.addEventListener('click', function(){
+    var current = r.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
